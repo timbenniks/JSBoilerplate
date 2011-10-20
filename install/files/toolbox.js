@@ -6,16 +6,16 @@
 	{
 		catchError: function(error)
 		{
-            this.log("Error: [" + error.message + "] in: " + error.fileName + ", on: " + error.lineNumber);
-        },
-        
-        log: function () 
-        {
+			this.log("Error: [" + error.message + "] in: " + error.fileName + ", on: " + error.lineNumber);
+		},
+
+		log: function () 
+		{
 			if (window.console && typeof window.console.log === 'function') 
-            {
-                console.log.apply(window.console, arguments);
-            }
-        },
+			{
+				console.log.apply(window.console, arguments);
+			}
+		},
 		
 		constants: 
 		{
@@ -23,5 +23,4 @@
 			location: window.location
 		}
 	});
-	
 })(jQuery, window.NAMESPACE = window.NAMESPACE || {});
