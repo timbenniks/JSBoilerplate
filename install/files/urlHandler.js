@@ -7,7 +7,7 @@
 		var loc = NAMESPACE.constants.location,
 			win = NAMESPACE.constants.window,
 			mediator = NAMESPACE.Mediator,
-			parsedUrl =  new Array(),
+			parsedUrl = [],
 		
 		bindHashChange = function()
 		{

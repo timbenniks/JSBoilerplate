@@ -76,7 +76,7 @@
 			}
 
 			components[name] = component;
-	    },
+		 },
 
 		getComponent = function(name)
 		{
@@ -89,12 +89,12 @@
 		};
 
 		return {
-			name: 		"Mediator",
-			add: 		addComponent,
-			rem: 		removeComponent,
-			get: 		getComponent,
-			has: 		contains,
-			broadcast: 	broadcast
+			name:		"Mediator",
+			add:		addComponent,
+			remove:		removeComponent,
+			get:		getComponent,
+			has:		contains,
+			broadcast:	broadcast
 		};
 	}();
 
