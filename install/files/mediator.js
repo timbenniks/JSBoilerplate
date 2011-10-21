@@ -89,7 +89,6 @@
 		};
 
 		return {
-			name:		"Mediator",
 			add:		addComponent,
 			remove:		removeComponent,
 			get:		getComponent,
