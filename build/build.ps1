@@ -1,0 +1,1 @@
+java -jar yuicompressor-2.4.6.jar ../library/*.js -o ../library/combined-min.js --charset utf-8 --type js --verbose
