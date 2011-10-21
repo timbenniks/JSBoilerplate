@@ -1,23 +1,26 @@
 /*globals jQuery*/
 (function($, NAMESPACE) 
 {
-	var ajaxhandler = function() 
+	var ajaxHandler = function() 
 	{
-		var win = NAMESPACE.constants.window,
-			mediator = NAMESPACE.Mediator,
+		var mediator = NAMESPACE.Mediator,
 	
 		call = function(method, options, handle)
 		{
 			var ajaxOptions = $.extend(true, options, 
 			{
-				success: function(data)
+				success: function(data, textStatus, jqXHR)
 				{
-					mediator.broadcast('AjaxSuccess', [{data: data}, {handle: handle}]);
+					var result = [{'data': data, 'textStatus': textStatus, 'jqXHR': jqXHR}]
+										
+					mediator.broadcast('AjaxResult', [result, handle]);
 				},
 				
-				error: function(data)
+				error: function(jqXHR, textStatus, errorThrown)
 				{
-					mediator.broadcast('AjaxError', [{data: data}, {handle: handle}]);
+					var result = [{'jqXHR': jqXHR, 'textStatus': textStatus, 'errorThrown': errorThrown}]
+					
+					mediator.broadcast('AjaxError', [result, handle]);
 				},
 
 				method: method
@@ -27,8 +30,8 @@
 		},
 	
 		listeners = 
-		{			
-			onGet : function(handle, options)
+		{
+			onGet: function(options, handle)
 			{
 				call('get', options, handle);
 			},
@@ -42,6 +45,6 @@
 		return listeners;
 	}();
 	
-	NAMESPACE.Mediator.add('ajaxhandler', ajaxhandler);
+	NAMESPACE.Mediator.add('ajaxHandler', ajaxHandler);
 
 })(jQuery, window.NAMESPACE = window.NAMESPACE || {});

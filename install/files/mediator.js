@@ -4,9 +4,9 @@
 	{
 		var components = {},
 
-		debug = function(debug)
+		debug = function()
 		{
-			NAMESPACE.log(debug);
+			NAMESPACE.log(arguments);
 		},
 
 		error = function(error)
@@ -25,7 +25,7 @@
 				return;
 			}
 
-			debug(["Mediator received", e, a].join(' '));
+			debug("Mediator received " + e, a);
 
 			for (c in components)
 			{
