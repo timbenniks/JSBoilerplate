@@ -25,6 +25,8 @@
 				{
 					mediator.broadcast('TrackEvent', [extractTrackingData(this)])
 				});
+				
+				mediator.broadcast('TrackPageView', ['example.com']);
 			}
 		}
 		
