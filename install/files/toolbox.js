@@ -20,7 +20,23 @@
 		constants: 
 		{
 			window: $(window),
-			location: window.location			
+			document: $(document),
+			location: window.location,
+			facebook: 
+			{
+				initOptions: 
+				{
+					apiKey: '7ab92fa4972e7384a0eb7bac37dcc9ab',
+					appId: '269201589764235',
+					status: true,
+					cookie: true,
+					xfbml: true,
+					oauth: true
+				},
+				
+				permissions: 'publish_stream',
+				locale: 'en_US'
+			}
 		}
 	});
 })(jQuery, window.NAMESPACE = window.NAMESPACE || {});
