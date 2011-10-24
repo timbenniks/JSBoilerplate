@@ -20,7 +20,7 @@
 		constants: 
 		{
 			window: $(window),
-			location: window.location
+			location: window.location			
 		}
 	});
 })(jQuery, window.NAMESPACE = window.NAMESPACE || {});

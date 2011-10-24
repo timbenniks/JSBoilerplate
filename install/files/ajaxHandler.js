@@ -1,4 +1,18 @@
 /*globals jQuery*/
+
+/* 
+
+var ajaxOptions = 
+{
+	url: 'ajax.json',
+	dataType: 'json',
+	data: { "data":"data" }
+}
+
+NAMESPACE.Mediator.broadcast('Get', [ajaxOptions, 'TimeLineUpdate']);
+
+*/
+
 (function($, NAMESPACE) 
 {
 	var ajaxHandler = function() 
