@@ -4,9 +4,10 @@
 {
 	var urlHandler = function() 
 	{
-		var loc = NAMESPACE.constants.location,
-			win = NAMESPACE.constants.window,
-			mediator = NAMESPACE.Mediator,
+		var ns = NAMESPACE,
+			loc = ns.constants.location,
+			win = ns.constants.window,
+			mediator = ns.Mediator,
 			parsedUrl = [],
 		
 		bindHashChange = function()

@@ -1,54 +1,48 @@
-(function(NAMESPACE)
+/*globals jQuery*/
+
+(function($, NAMESPACE)
 {
 	NAMESPACE.Mediator = function()
 	{
 		var components = {},
-
-		debug = function()
-		{
-			NAMESPACE.log(arguments);
-		},
+			ns = NAMESPACE,
 
 		error = function(error)
 		{
-			NAMESPACE.catchError(error);
+			ns.catchError(error);
 		},
 
 		broadcast = function(event, args, source)
 		{
 			var e = event || false,
 				a = args  || [],
-				c, s;
+				s;
 
 			if (!e)
 			{
 				return;
 			}
 
-			debug("Mediator received " + e, a);
-
-			for (c in components)
+			$.each(components, function(index, component) 
 			{
-				if (typeof components[c]["on" + e] === "function")
+				if (typeof component["on" + e] === "function")
 				{
 					try
 					{
-						debug("Mediator calling " + e + " on " + c);
-
-						s = source || components[c];
-						components[c]["on" + e].apply(s, a);
+						s = source || component;
+						component["on" + e].apply(s, a);
 					}
 					catch (err)
 					{
 						error(err);
 					}
 				}
-			}
+			});
 		},
 
 		removeComponent = function(name)
 		{
-			if (name in components)
+			if (components.hasOwnProperty(name))
 			{
 				delete components[name];
 			}
@@ -56,7 +50,7 @@
 
 		addComponent = function(name, component, replaceDuplicate)
 		{
-			if (name in components)
+			if (components.hasOwnProperty(name))
 			{
 				try
 				{
@@ -76,7 +70,7 @@
 			}
 
 			components[name] = component;
-		 },
+		},
 
 		getComponent = function(name)
 		{
@@ -85,16 +79,37 @@
 
 		contains = function(name)
 		{
-			return (name in components);
+			return (components.hasOwnProperty(name));
+		},
+		
+		manageConstants = function()
+		{
+			var component;
+			
+			if(typeof ns.constants === 'undefined')
+			{
+				ns.constants = {};
+			}
+			
+			$.each(components, function(index, component) 
+			{
+				if (typeof component.constants === 'object')
+				{
+					$.extend(ns.constants, component.constants);
+				}
+			});
+			
+			return ns.constants;
 		};
 
 		return {
-			add:		addComponent,
-			remove:		removeComponent,
-			get:		getComponent,
-			has:		contains,
-			broadcast:	broadcast
+			add:				addComponent,
+			remove:				removeComponent,
+			get:				getComponent,
+			has:				contains,
+			broadcast:			broadcast,
+			manageConstants:	manageConstants
 		};
 	}();
 
-})(window.NAMESPACE = window.NAMESPACE || {});
+})(jQuery, window.NAMESPACE = window.NAMESPACE || {});

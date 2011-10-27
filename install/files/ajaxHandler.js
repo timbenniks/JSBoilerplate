@@ -25,14 +25,14 @@ NAMESPACE.Mediator.broadcast('Get', [ajaxOptions, 'TimeLineUpdate']);
 			{
 				success: function(data, textStatus, jqXHR)
 				{
-					var result = [{'data': data, 'textStatus': textStatus, 'jqXHR': jqXHR}]
+					var result = [{'data': data, 'textStatus': textStatus, 'jqXHR': jqXHR}];
 										
 					mediator.broadcast('AjaxResult', [result, handle]);
 				},
 				
 				error: function(jqXHR, textStatus, errorThrown)
 				{
-					var result = [{'jqXHR': jqXHR, 'textStatus': textStatus, 'errorThrown': errorThrown}]
+					var result = [{'jqXHR': jqXHR, 'textStatus': textStatus, 'errorThrown': errorThrown}];
 					
 					mediator.broadcast('AjaxError', [result, handle]);
 				},

@@ -4,21 +4,23 @@
 {
 	var facebook = function() 
 	{
-		var mediator = NAMESPACE.Mediator,
-			facebookLocale = 'en_US',
-			win = NAMESPACE.constants.window,
-			doc = NAMESPACE.constants.document,
-			fbkOptions = NAMESPACE.constants.facebook,
+		var ns = NAMESPACE, 
+			mediator = ns.Mediator,
+			win = ns.constants.window,
+			doc = ns.constants.document,
+			fbkOptions,
 		
 		init = function()
 		{
+			fbkOptions = ns.constants.facebook;
+			
 			doc.find('body').append('<div id="fb-root"></div>');
 			
 			(function ()
 			{
 				var e = document.createElement('script');
 				e.async = true;
-				e.src = 'http://connect.facebook.net/'+ facebookLocale +'/all.js';
+				e.src = 'http://connect.facebook.net/'+ fbkOptions.locale +'/all.js';
 				document.getElementById('fb-root').appendChild(e);
 			}());	
 			
@@ -50,7 +52,25 @@
 		listeners = 
 		{
 			onInit: init,
-			onFacebookLogin: login
+			onFacebookLogin: login,
+			constants: 
+			{
+				facebook: 
+				{
+					initOptions: 
+					{
+						apiKey: '7ab92fa4972e7384a0eb7bac37dcc9ab',
+						appId: '269201589764235',
+						status: true,
+						cookie: true,
+						xfbml: true,
+						oauth: true
+					},
+					
+					permissions: 'publish_stream',
+					locale: 'en_US'
+				}
+			}
 		};
 		
 		return listeners;

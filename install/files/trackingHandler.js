@@ -4,7 +4,8 @@
 {
 	var trackingHandler = function() 
 	{
-		var mediator = NAMESPACE.Mediator,
+		var ns = NAMESPACE,
+			mediator = ns.Mediator,
 		
 		extractTrackingData = function(object)
 		{

@@ -4,10 +4,12 @@
 {
 	var facebookShare = function() 
 	{
-		var shareDefaults = { method: 'feed', dislpay: 'dialog' },
+		var ns = NAMESPACE,
+			mediator = ns.Mediator,
+			shareDefaults = { method: 'feed', dislpay: 'dialog' },
 			shareOptions,
-		
-		share = function(options)
+					
+		shareWithDialog = function(options)
 		{
 			shareOptions = $.extend({}, options, shareDefaults);
 			
@@ -17,11 +19,26 @@
 			});
 		},
 		
+		shareAsApp = function(userId, options)
+		{
+			shareOptions = $.extend({}, options, shareDefaults);
+			
+			FB.api(userId + '/feed', 'post', shareOptions, function(response)
+			{
+				mediator.broadcast('FacebookShareDone', [response]);
+			});			
+		},
+		
 		listeners = 
 		{
-			onFacebookShare: function(options)
+			onFacebookShareWithDialog: function(options)
 			{
-				share(options);
+				shareWithDialog(options);
+			},
+			
+			onFacebookShareAsApp: function(options)
+			{
+				shareAsApp(options);
 			}
 		};
 		

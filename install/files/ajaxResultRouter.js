@@ -3,7 +3,8 @@
 {
 	var ajaxResultRouter = function() 
 	{
-		var mediator = NAMESPACE.Mediator,
+		var ns = NAMESPACE, 
+			mediator = ns.Mediator,
 		
 		listeners = 
 		{			
@@ -14,7 +15,7 @@
 			
 			onAjaxError: function(result)
 			{
-				NAMESPACE.log(result);
+				ns.log(result);
 			}
 		};
 		
