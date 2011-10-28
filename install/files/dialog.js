@@ -23,8 +23,6 @@
 				.append(dialogCloseBtn)
 				.append(dialogContentHolder)
 				.appendTo(doc.find('body'));
-			
-			
 		},
 		
 		position = function()
@@ -61,15 +59,15 @@
 		{
 			if(typeof dialog !== 'undefined')
 			{
-				dialog.fadeOut(300, function()
+				dialog.fadeOut(200, function()
 				{
 					$(this).remove();
 					mediator.broadcast('DialogHidden');
 					
 					if(callback && typeof callback === 'function')
-			{
-				callback();
-			}
+					{
+						callback();
+					}
 				});
 			}
 			else 
@@ -96,7 +94,7 @@
 				fill();
 				position();
 				
-				dialog.fadeIn(300, function()
+				dialog.fadeIn(200, function()
 				{
 					mediator.broadcast('DialogVisible');
 				});
