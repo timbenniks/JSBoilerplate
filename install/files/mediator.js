@@ -82,6 +82,11 @@
 			return (components.hasOwnProperty(name));
 		},
 		
+		returnComponents = function()
+		{
+			return components;
+		},
+		
 		manageConstants = function()
 		{
 			var component;
@@ -108,7 +113,8 @@
 			get:				getComponent,
 			has:				contains,
 			broadcast:			broadcast,
-			manageConstants:	manageConstants
+			manageConstants:	manageConstants,
+			getAll:				returnComponents
 		};
 	}();
 
