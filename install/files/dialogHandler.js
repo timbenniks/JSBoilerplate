@@ -14,7 +14,7 @@
 			{
 				$('.trigger-dialog-show').bind('click', function()
 				{
-					dialogInstance.setContent('<h1>Monkey</h1>');
+					dialogInstance.setContent('<h1>Awesome content dialog</h1>');
 					mediator.broadcast('ShowDialog');
 				});
 				

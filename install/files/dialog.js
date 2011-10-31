@@ -9,15 +9,18 @@
 			doc = ns.constants.document,
 			win = ns.constants.window,
 			dialog,
+			dialogId = 'dialog',
 			dialogContentHolder,
+			dialogContentHolderClass = 'dialog-content-holder',
 			dialogCloseBtn,
+			dialogCloseBtnClass = 'dialog-close-btn',
 			dialogContent = 'Use the setContent function to add content to the dialog.',
-		
+			
 		build = function()
 		{
-			dialog = $('<div id="dialog"></div>').hide();
-			dialogContentHolder = $('<div class="dialog-content-holder"></div>');
-			dialogCloseBtn = $('<div class="dialog-close-btn">close</div>');
+			dialog = $('<div id="'+ dialogId +'"></div>').hide();
+			dialogContentHolder = $('<div class="'+ dialogContentHolderClass +'"></div>');
+			dialogCloseBtn = $('<div class="'+ dialogCloseBtnClass +'">close</div>');
 			
 			dialog
 				.append(dialogCloseBtn)

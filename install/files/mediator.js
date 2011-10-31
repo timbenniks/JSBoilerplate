@@ -12,6 +12,21 @@
 			ns.catchError(error);
 		},
 
+		manageComponentConstants = function(component)
+		{
+			if(typeof ns.constants === 'undefined')
+			{
+				ns.constants = {};
+			}
+			
+			if(component && typeof component.constants === 'object')
+			{
+				$.extend(ns.constants, component.constants);
+			}
+			
+			return ns.constants;
+		},
+
 		broadcast = function(event, args, source)
 		{
 			var e = event || false,
@@ -70,6 +85,8 @@
 			}
 
 			components[name] = component;
+
+			manageComponentConstants(components[name]);
 		},
 
 		getComponent = function(name)
@@ -85,26 +102,6 @@
 		returnComponents = function()
 		{
 			return components;
-		},
-		
-		manageConstants = function()
-		{
-			var component;
-			
-			if(typeof ns.constants === 'undefined')
-			{
-				ns.constants = {};
-			}
-			
-			$.each(components, function(index, component) 
-			{
-				if (typeof component.constants === 'object')
-				{
-					$.extend(ns.constants, component.constants);
-				}
-			});
-			
-			return ns.constants;
 		};
 
 		return {
@@ -113,7 +110,7 @@
 			get:				getComponent,
 			has:				contains,
 			broadcast:			broadcast,
-			manageConstants:	manageConstants,
+			manageConstants:	manageComponentConstants,
 			getAll:				returnComponents
 		};
 	}();
