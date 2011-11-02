@@ -1,0 +1,59 @@
+﻿<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <SnippetTypes>
+        <SnippetType>Expansion</SnippetType>
+      </SnippetTypes>
+      <Title>JSBoilerplate: Object class for Mediator</Title>
+      <Author>Tim Benniks</Author>
+      <Shortcut>jsbobject</Shortcut>
+      <HelpUrl>http://timbenniks.nl</HelpUrl>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>pluginName</ID>
+          <ToolTip>Name of the plugin to create</ToolTip>
+          <Default>plugin</Default>
+        </Literal>
+        <Literal>
+          <ID>nameSpace</ID>
+          <ToolTip>Namespace of the project</ToolTip>
+          <Default>NAMESPACE</Default>
+        </Literal>
+
+        <Literal>
+          <ID>initFunc</ID>
+          <ToolTip>Name of first functiun</ToolTip>
+          <Default>Init</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="jscript">
+        <![CDATA[
+(function($nameSpace$) 
+{
+    var $pluginName$ = function()
+    {
+	      var ns = $nameSpace$,
+            mediator = ns.Mediator,
+
+        listeners = 
+        {
+            on$initFunc$: function() 
+            {
+                $end$
+            }
+        };
+    
+        return listeners;
+    }();
+	
+    LE.Mediator.add('$pluginName$', $pluginName$);
+
+})(window.$nameSpace$ = window. $nameSpace$ || {});
+]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
+
