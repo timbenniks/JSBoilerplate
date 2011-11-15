@@ -59,7 +59,7 @@
 				{
 					initOptions: 
 					{
-						apiKey: '7ab92fa4972e7384a0eb7bac37dcc9ab',
+						apiKey: '269201589764235',
 						appId: '269201589764235',
 						status: true,
 						cookie: true,

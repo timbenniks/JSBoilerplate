@@ -60,11 +60,17 @@
 		
 		hide = function(callback)
 		{
-			if(typeof dialog !== 'undefined')
+			if(!$('.dialog:visible').length)
 			{
-				dialog.fadeOut(200, function()
+				if(callback && typeof callback === 'function')
 				{
-					$(this).remove();
+					callback();
+				}
+			}
+			else
+			{
+				$('.dialog').fadeOut(200, function()
+				{
 					mediator.broadcast('DialogHidden');
 					
 					if(callback && typeof callback === 'function')
@@ -72,13 +78,6 @@
 						callback();
 					}
 				});
-			}
-			else 
-			{
-				if(callback && typeof callback === 'function')
-				{
-					callback();
-				}
 			}
 		},
 		

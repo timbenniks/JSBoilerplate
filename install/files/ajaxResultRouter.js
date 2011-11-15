@@ -1,5 +1,5 @@
 /*globals jQuery*/
-(function($, NAMESPACE) 
+(function($, LE) 
 {
 	var ajaxResultRouter = function() 
 	{
@@ -13,9 +13,9 @@
 				mediator.broadcast(handle, [result[0]]);
 			},
 			
-			onAjaxError: function(result)
+			onAjaxError: function(result, handle)
 			{
-				ns.log(result);
+				mediator.broadcast(handle+'Error', [result[0]]);
 			}
 		};
 		

@@ -29,6 +29,28 @@
 			}
 		},
 		
+		unparam: function(parameters)
+		{
+			var returnObj = {},
+				segment = parameters.replace(/^.*\?/,'').split('&'),
+				length = segment.length, 
+				i = 0, 
+				splittedSegment;
+			
+			for (;i < length; i++) 
+			{
+				if (!segment[i]) 
+				{ 
+					continue; 
+				}
+				
+				splittedSegment = segment[i].split('=');
+				returnObj[splittedSegment[0]] = splittedSegment[1];
+			}
+
+			return returnObj;
+		},
+		
 		listeners = 
 		{
 			onInit: function() 
